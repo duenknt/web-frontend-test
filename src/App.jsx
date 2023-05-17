@@ -8,8 +8,9 @@ import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-// import Modal from "react-bootstrap/Modal";
-// import Form from "react-bootstrap/Form";
+import { Routes, Route, Link } from "react-router-dom";
+import CreatePost from "./pages/CreatePost.jsx";
+import NewPost from "./pages/NewPost.jsx";
 
 const baseURL = "http://dev.opensource-technology.com:3000/api";
 
@@ -19,11 +20,10 @@ export default function App() {
   useEffect(() => {
     axios.get(`${baseURL}/posts`).then((response) => {
       setGet(response.data.posts);
-      console.log('ดูข้อมูล', response.data.posts);
+      console.log("ดูข้อมูล", response.data.posts);
     });
   }, []);
 
-  function createPost() {}
   function updatePost() {}
   function deletePost() {}
 
@@ -45,7 +45,13 @@ export default function App() {
               </Nav>
             </Col>
             <Col md={6} className="d-flex justify-content-end">
-              <Button onClick={createPost}>CreatePost</Button>
+              <Link to="/CreatePost">
+                <Button>CreatePost</Button>
+              </Link>
+              <Routes>
+                  <Route path="/NewPost" element={<NewPost />}></Route>
+                  <Route path="/CreatePost" element={<CreatePost />}></Route>
+                </Routes>
             </Col>
           </Row>
           <Row>
@@ -64,13 +70,14 @@ export default function App() {
                             </h6>
                             <Row>
                               <Col>
-                                <h6>{item.created_at}</h6>
+                                <h6 key={index}>{item.created_at}</h6>
                               </Col>
                               <Col className="d-flex justify-content-end">
                                 <Button size="sm">Edit</Button>
                               </Col>
                             </Row>
-                          </Card><br />
+                          </Card>
+                          <br />
                         </>
                       ))}
                     </Col>
@@ -89,15 +96,21 @@ export default function App() {
                             </h6>
                             <Row>
                               <Col>
-                                <h6>{item.created_at}</h6>
+                                <h6 key={index}>{item.created_at}</h6>
                               </Col>
                               <Col className="d-flex justify-content-end">
-                                <Button size="sm" onClick={updatePost}>Edit</Button> &nbsp;
+                                <Button size="sm" onClick={updatePost}>
+                                  Edit
+                                </Button>{" "}
+                                &nbsp;
                                 <Button size="sm">Published</Button> &nbsp;
-                                <Button size="sm" onClick={deletePost}>Delete</Button>
+                                <Button size="sm" onClick={deletePost}>
+                                  Delete
+                                </Button>
                               </Col>
                             </Row>
-                          </Card> <br />
+                          </Card>
+                          <br />
                         </>
                       ))}
                     </Col>
