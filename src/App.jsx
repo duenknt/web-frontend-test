@@ -67,7 +67,7 @@ export default function App() {
                                 <h6>{item.created_at}</h6>
                               </Col>
                               <Col className="d-flex justify-content-end">
-                                <Button size="sm">Edit</Button>
+                                <Button size="sm">Editt123456456</Button>
                               </Col>
                             </Row>
                           </Card><br />
