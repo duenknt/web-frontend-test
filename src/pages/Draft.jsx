@@ -32,7 +32,7 @@ export default function Draft() {
         },
         { "Content-Type": "application-json" }
       )
-      .then(() => console.log("OK"))
+      .then(() => console.log("Publish succeed"))
       .catch((e) => console.log(e));
   };
 
