@@ -54,7 +54,7 @@ export default function CreateDraft() {
           <Form.Group className="mb-3 mt-3">
             <Form.Label className="d-flex justify-content-center">
               <h3>New Post</h3>
-            </Form.Label>{" "}
+            </Form.Label>
             <br />
             <Form.Label>Title</Form.Label>
             <Form.Control
